@@ -1,5 +1,8 @@
 Some ideas about directions for the project:
 
-1. Imagine taking the county-level network as is and swapping the location of two counties. If we do this infinitely many times, we could (hopefully) treat this as a configuration model from which we could compare modularity scores. The "county-swapped" model would be our "null" model for intra-factor modularity.
+1. Imagine taking the county-level network as is and swapping the location of two counties. 
+   If we do this infinitely many times, we could (hopefully) treat this as a configuration model from which we could compare modularity scores. 
+   The "county-swapped" model would be our "null" model for intra-factor modularity.
 
-2. For the regression models, we could compare to a baseline model where we try to predict a factor given the other factors in the same county. We could ask the question "how much does a given counties other factors soak up the predictability, or how much do we gain by using the spatial neighbors of a county?" 
+2. For the regression models, we could compare to a baseline model where we try to predict a factor given the other factors in the same county.
+   We could ask the question "how much does a given counties other factors soak up the predictability, or how much do we gain by using the spatial neighbors of a county?" 
