@@ -3,8 +3,13 @@ from collections import defaultdict
 import re
 import pickle
 
+def pickle_out(filename, object_to_dump):
+    with open(filename, 'wb') as pickleFile:
+        pickle.dump(object_to_dump, pickleFile)
+        pickleFile.close()
+
 if __name__ == '__main__':
-    file = open('county_adjacency_raw.txt', 'r', errors='ignore')
+    file = open('raw_data/county_adjacency_raw.txt', 'r', errors='ignore')
 
     r = re.compile('(\w+\sCounty, \w+)')
     r1 = re.compile('(\w+\sMunicipo, \w+)')
@@ -38,6 +43,13 @@ if __name__ == '__main__':
                     curr_idx += 1
                 break
 
+    pickle_out('processed_data/county_to_idx', to_idx)
+
+    save_adj_list = {}
+    for county, adjs in adj_list.items():
+        save_adj_list[to_idx[county]] = [to_idx[c] for c in adjs]
+
+    pickle_out('processed_data/adj_list',save_adj_list)
 
     n = curr_idx
     adj_matrix = np.zeros((n,n))
@@ -45,12 +57,9 @@ if __name__ == '__main__':
         for adj in adj_counties:
             adj_matrix[to_idx[county], to_idx[adj]] = 1
 
-    print(adj_matrix)
-    np.save(adj_matrix)
+    np.save('/processed_data/adj_matrix',adj_matrix)
 
-    with open('county_to_idx', 'wb') as pickleFile:
-        pickle.dump(to_idx, pickleFile)
-        pickleFile.close()
+
 
 
 
