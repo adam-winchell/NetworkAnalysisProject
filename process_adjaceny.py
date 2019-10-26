@@ -57,7 +57,7 @@ if __name__ == '__main__':
         for adj in adj_counties:
             adj_matrix[to_idx[county], to_idx[adj]] = 1
 
-    np.save('/processed_data/adj_matrix',adj_matrix)
+    pickle_out('processed_data/adj_matrix', adj_matrix)
 
 
 
