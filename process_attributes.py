@@ -74,15 +74,40 @@ def process_population(n):
     for year, mat in attributes.items():
         pickle_out('processed_data/population_' + str(year), mat)
 
+def process_poverty_and_population(n):
+    df = pd.read_excel('raw_data/povertyrates1989-1999.xls')
+    years = [1989, 1999]
+
+    attributes_poverty = {year: np.full((n, 1), np.nan) for year in years}
+    attributes_population = {year: np.full((n, 1), np.nan) for year in years}
+
+    for row in df.iloc[2:].itertuples(index=False):
+
+        county = row[2] + ', ' + row[1]
+        if county in county_to_idx:
+            idx = county_to_idx[county]
+
+            attributes_population[1989][idx] = row[10]
+            attributes_population[1999][idx] = row[13]
+
+            attributes_poverty[1989][idx] = row[12]
+            attributes_poverty[1999][idx] = row[15]
+
+    for year, mat in attributes_poverty.items():
+        pickle_out('processed_data/poverty_' + str(year), mat)
+
+    for year, mat in attributes_population.items():
+        pickle_out('processed_data/population_' + str(year), mat)
+
 if __name__ == '__main__':
     county_to_idx = pickle_in('processed_data/county_to_idx')
 
     n = len(county_to_idx)
 
-    process_education(n)
-    process_unemployment(n)
-    process_poverty(n)
-    process_population(n)
-
+    # process_education(n)
+    # process_unemployment(n)
+    # process_poverty(n)
+    # process_population(n)
+    process_poverty_and_population(n)
 
 
