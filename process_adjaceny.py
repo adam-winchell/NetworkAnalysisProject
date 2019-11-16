@@ -39,8 +39,6 @@ if __name__ == '__main__':
                 curr_idx += 1
 
 
-    pickle_out('processed_data/county_to_idx', to_idx)
-
     save_adj_list = {}
     for county, adjs in adj_list.items():
         save_adj_list[to_idx[county]] = [to_idx[c] for c in adjs]
@@ -55,7 +53,8 @@ if __name__ == '__main__':
 
     pickle_out('processed_data/adj_matrix', adj_matrix)
 
-
+    to_idx = {val:key for key,val in to_idx.items()}
+    pickle_out('processed_data/county_to_idx', to_idx)
 
 
 
