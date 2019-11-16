@@ -11,8 +11,8 @@ def pickle_out(filename, object_to_dump):
 if __name__ == '__main__':
     file = open('raw_data/county_adjacency_raw.txt', 'r', errors='ignore')
 
-    # patt = re.compile('\\"(.+)\\"\s+\d+\s+\\"(.+)\\"\s+\d+')
     patt = re.compile('\\"(.+)\\"')
+    # patt = re.compile('(\d+)')    #if we want to parse by GEOID (which is less susceptible to erros
 
     current_county = ''
     adj_list = defaultdict(list)
@@ -21,16 +21,15 @@ if __name__ == '__main__':
     for line in file:
         s= re.findall(patt,line)
         if s != []:
-            s = s[0].split('"')
-            print(s)
+            s = s[0].split('"') #comment out if parsing using GEOID
 
-            if len(s) == 3:
+            if len(s) == 3: #change to 2 if using GEOID
                 current_county = s[0]
 
-                adj_list[current_county].append(s[2])
+                adj_list[current_county].append(s[2])   #change to s[1] if parsing using GEOID
 
-                if s[2] not in to_idx:
-                    to_idx[s[2]] = curr_idx
+                if s[2] not in to_idx:  #change to s[1] if parsing using GEOID
+                    to_idx[s[2]] = curr_idx #change to s[1] if parsing using GEOID
                     curr_idx += 1
             else:
                 adj_list[current_county].append(s[0])
