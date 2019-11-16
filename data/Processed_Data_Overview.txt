@@ -1,0 +1,14 @@
+Overall:
+Each set of data is a numpy array saved using pickle. Missing entries have a value of NaN.
+
+Education:
+Each file gives the year that the data were aggragated and supplies 4 levels of education: less than highschool diploma, only highschool diploma, some college, four years of college or higher. Each of these values is expressed as a percentage of the counties population (this can be changed to raw population numbers if we so desire). Note that the data for 2013, spans from 2013-2017.
+
+Unemployment:
+Each file gives the year that the data were aggragated and the values are expressed as percentages of the counties population (this can be changed to raw population numbers).
+
+Poverty:
+Each file gives the year that the data were aggragated and the values are expressed as percentages of the counties population (this can be changed to raw population numbers).
+
+Population:
+Each file gives the year that the data were aggragated and the values are the raw number of people. There are other statistics for net migration, net change in population, birth rates, and death rates, if we think these would be useful.
