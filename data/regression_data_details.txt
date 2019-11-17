@@ -1,0 +1,41 @@
+The regression data is split into three files based on year:
+    * clean_regression_1990
+    * clean_regression_2000
+    * clean_regression_2017
+
+The "clean_regression_2017" file is made up of:
+    * education_2013
+    * population_2017
+    * poverty_2017
+    * unemployment_2017
+In those files, there were 39 NaN values spread across 16 rows. The 16 rows were removed from the dataset.
+Column descriptions:
+    * First column is the index to map back to county name
+    * Second through fifth columns are education metrics
+    * Sixth column is the population
+    * Seventh column is the poverty metric
+    * Eighth column is the unemployment metric
+
+The "clean_regression_2000" file is made up of:
+    * education_2000
+    * population_1999
+    * poverty_1999
+Note that this data doesn't include unemployment.
+In those files, there were 112 NaN values spread across 49 rows. The 49 rows were removed from the dataset.
+Column descriptions:
+    * First column is the index to map back to county name
+    * Second through fifth columns are education metrics
+    * Sixth column is the population
+    * Seventh column is the poverty metric
+
+The "clean_regression_1990" file is made up of:
+    * education_1990
+    * population_1989
+    * poverty_1989
+Note that this data doesn't include unemployment.
+In those files, there were 112 NaN values spread across 49 rows. The 49 rows were removed from the dataset.
+Column descriptions:
+    * First column is the index to map back to county name
+    * Second through fifth columns are education metrics
+    * Sixth column is the population
+    * Seventh column is the poverty metric
