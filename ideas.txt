@@ -8,3 +8,7 @@ Some ideas about directions for the project:
    We could ask the question "how much does a given counties other factors soak up the predictability, or how much do we gain by using the spatial neighbors of a county?" 
    
 3. (Adam) Do predictions scale with time. Train on 70% of training data for 1980s and predict on the 30% test set for 1980s, using the same model and same set of counties predict for the test set for 1990s and 2000s. Repeat this process for training on 1990s and predicting 1990s and 2000s test set. Our hypothesis is that the models do not perform as well when applied to future data.
+
+4. Ideas for feature extraction, e.g. dealing with the varying number of counties:
+   a. The largest number of neighboring counties is 15, so for any county with less neighbors, use zeros to represent the missing counties.
+   b. For each feature --education, poverty, unemployment--, calculate the mean, min, max, std among the neighbors. Also report the total number of neighbors for a county. Therefore there should be 13 features for each county.
