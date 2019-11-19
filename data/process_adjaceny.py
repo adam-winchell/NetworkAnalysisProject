@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
     save_adj_list = {}
     for county, adjs in adj_list.items():
-        save_adj_list[to_idx[county]] = [to_idx[c] for c in adjs]
+        save_adj_list[to_idx[county]] = [to_idx[c] for c in adjs if c !=county]
 
     pickle_out('processed_data/adj_list', save_adj_list)
 
@@ -66,6 +66,8 @@ if __name__ == '__main__':
     adj_matrix = np.zeros((n, n))
     for county, adj_counties in adj_list.items():
         for adj in adj_counties:
+            if county == adj:
+                continue
             adj_matrix[to_idx[county], to_idx[adj]] = 1
 
     pickle_out('processed_data/adj_matrix', adj_matrix)
